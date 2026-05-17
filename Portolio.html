@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Portfolio</title>
+
+    <link rel="icon" href="./logop2.png" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+
+        background: black;
+        color: white;
+
+        font-family: Arial, sans-serif;
+
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      /* MATRIX BACKGROUND */
+
+      .matrix-bg {
+        position: fixed;
+        inset: 0;
+
+        display: flex;
+        justify-content: center;
+
+        overflow: hidden;
+      }
+
+      .matrix-bg p {
+        line-height: 1;
+      }
+
+      .matrix-bg span {
+        display: block;
+
+        width: 1.5vmax;
+        height: 2vmax;
+
+        font-size: 1.5vmax;
+
+        color: #9bff9b11;
+
+        text-align: center;
+
+        font-family: monospace;
+      }
+
+      /* DARK OVERLAY */
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.35);
+
+        pointer-events: none;
+      }
+
+      /* KEEP CONTENT ABOVE OVERLAY */
+
+      nav,
+      section {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* NAVBAR */
+
+      nav {
+        position: fixed;
+        top: 0;
+
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 20px 60px;
+
+        backdrop-filter: blur(10px);
+
+        border-bottom: 1px solid #8aff8a33;
+
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      nav h1 {
+        color: #8aff8a;
+
+        font-size: 2rem;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 30px;
+
+        list-style: none;
+      }
+
+      nav a {
+        color: white;
+
+        text-decoration: none;
+
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #8aff8a;
+      }
+
+      /* HERO */
+
+      .hero {
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+        border-radius: 5px;
+        padding: 20px;
+      }
+
+      .hero h2 {
+        font-size: 5rem;
+
+        color: #8aff8a;
+
+        text-shadow:
+          0 0 10px #8aff8a,
+          0 0 20px #8aff8a,
+          0 0 40px #8aff8a;
+      }
+
+      .hero p {
+        margin-top: 20px;
+
+        font-size: 1.2rem;
+
+        color: #cccccc;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 20px;
+
+        margin-top: 40px;
+      }
+
+      .buttons button {
+        padding: 14px 28px;
+        border-radius: 5px;
+        border: 1px solid #8aff8a;
+
+        background: transparent;
+
+        color: #8aff8a;
+
+        font-size: 1rem;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+      }
+
+      .buttons button:hover {
+        background: #8aff8a;
+        color: black;
+
+        box-shadow: 0 0 20px #8aff8a;
+      }
+
+      /* SECTIONS */
+
+      section {
+        padding: 100px 10%;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+
+        margin-bottom: 40px;
+
+        color: #8aff8a;
+      }
+
+      /* ABOUT */
+
+      .about-box {
+        background: rgba(255, 255, 255, 0.05);
+
+        border: 1px solid #8aff8a33;
+
+        padding: 40px;
+
+        border-radius: 20px;
+
+        backdrop-filter: blur(10px);
+
+        line-height: 1.8;
+      }
+
+      /* SKILLS */
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 20px;
+      }
+
+      .skill {
+        padding: 12px 24px;
+
+        border: 1px solid #8aff8a55;
+
+        border-radius: 50px;
+
+        background: rgba(255, 255, 255, 0.03);
+
+        transition: 0.3s;
+      }
+
+      .skill:hover {
+        transform: translateY(-5px);
+
+        box-shadow: 0 0 15px #8aff8a55;
+      }
+
+      /* PROJECTS */
+
+      .projects-grid {
+        display: grid;
+
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+        gap: 30px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+
+        border: 1px solid #8aff8a33;
+
+        padding: 30px;
+
+        border-radius: 20px;
+
+        backdrop-filter: blur(10px);
+
+        transition: 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+
+        box-shadow: 0 0 20px #8aff8a33;
+      }
+
+      .card h3 {
+        color: #8aff8a;
+
+        margin-bottom: 15px;
+      }
+
+      /* CONTACT */
+
+      .contact-links {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 30px;
+      }
+
+      .contact-links a {
+        color: #8aff8a;
+
+        text-decoration: none;
+
+        border: 1px solid #8aff8a44;
+
+        padding: 12px 20px;
+
+        border-radius: 10px;
+
+        transition: 0.3s;
+      }
+
+      .contact-links a:hover {
+        background: #8aff8a;
+
+        color: black;
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 20px;
+        }
+
+        nav ul {
+          gap: 15px;
+        }
+
+        .hero h2 {
+          font-size: 3rem;
+        }
+
+        .buttons {
+          flex-direction: column;
+        }
+
+        .matrix-bg span {
+          font-size: 2.5vmax;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- MATRIX BACKGROUND -->
+
+    <main class="matrix-bg"></main>
+
+    <!-- OVERLAY -->
+
+    <div class="overlay"></div>
+
+    <!-- NAVBAR -->
+
+    <nav>
+      <h1>TZ</h1>
+
+      <ul>
+        <li><a href="#about">About</a></li>
+
+        <li><a href="#skills">Skills</a></li>
+
+        <li><a href="#projects">Projects</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <h2>Tabiq Zargar</h2>
+
+      <p>Frontend Developer • Programming Student</p>
+
+      <div class="buttons">
+        <button>View Projects</button>
+
+        <button>Contact Me</button>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+
+      <div class="about-box">
+        <p>
+          I am a programming student passionate about frontend and backend
+          development, futuristic UI design, web applications, and modern web
+          technologies.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+
+      <div class="skills">
+        <div class="skill">HTML</div>
+
+        <div class="skill">CSS</div>
+
+        <div class="skill">JavaScript</div>
+
+        <div class="skill">Bootstrap</div>
+        <div class="skill">Tailwind CSS</div>
+        <div class="skill">Python</div>
+
+        <div class="skill">C</div>
+
+        <div class="skill">Node.js</div>
+
+        <div class="skill">Express.js</div>
+
+        <div class="skill">MongoDB</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="projects-grid">
+        <div class="card">
+          <h3>Netflix Clone</h3>
+
+          <p>Netflix inspired website with responsive ui</p>
+        </div>
+
+        <div class="card">
+          <h3>Login Page</h3>
+
+          <p>Responsive futuristic login page with glassmorphism styling.</p>
+        </div>
+
+        <div class="card">
+          <h3>Calculator</h3>
+
+          <p>Basic calculator app using JavaScript.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+
+      <div class="contact-links">
+        <a href="https://github.com/TabiqZargar">
+          <img src="./github.png" width="20px" alt="" /> GitHub</a
+        >
+
+        <a href="https://www.linkedin.com/in/tabiq-zargar-4ba724345/">
+          <img src="./linkedin-.webp" width="20px" alt="" /> LinkedIn</a
+        >
+
+        <a href="https://x.com/tabiqzargar"
+          ><img src="./logo-white.png" width="20px" alt=""
+        /></a>
+      </div>
+    </section>
+
+    <script>
+      function r(from, to) {
+        return ~~(Math.random() * (to - from + 1) + from);
+      }
+
+      function pick() {
+        return arguments[r(0, arguments.length - 1)];
+      }
+
+      function getChar() {
+        return String.fromCharCode(
+          pick(r(0x3041, 0x30ff), r(0x2000, 0x206f), r(0x0020, 0x003f)),
+        );
+      }
+
+      function loop(fn, delay) {
+        let stamp = Date.now();
+
+        function _loop() {
+          if (Date.now() - stamp >= delay) {
+            fn();
+            stamp = Date.now();
+          }
+
+          requestAnimationFrame(_loop);
+        }
+
+        requestAnimationFrame(_loop);
+      }
+
+      class Char {
+        constructor() {
+          this.element = document.createElement("span");
+
+          this.mutate();
+        }
+
+        mutate() {
+          this.element.textContent = getChar();
+        }
+      }
+
+      class Trail {
+        constructor(list = [], options) {
+          this.list = list;
+
+          this.options = Object.assign(
+            {
+              size: 10,
+              offset: 0,
+            },
+            options,
+          );
+
+          this.body = [];
+
+          this.move();
+        }
+
+        traverse(fn) {
+          this.body.forEach((n, i) => {
+            let last = i == this.body.length - 1;
+
+            if (n) fn(n, i, last);
+          });
+        }
+
+        move() {
+          this.body = [];
+
+          let { offset, size } = this.options;
+
+          for (let i = 0; i < size; ++i) {
+            let item = this.list[offset + i - size + 1];
+
+            this.body.push(item);
+          }
+
+          this.options.offset = (offset + 1) % (this.list.length + size - 1);
+        }
+      }
+
+      class Rain {
+        constructor({ target, row }) {
+          this.element = document.createElement("p");
+
+          this.build(row);
+
+          if (target) {
+            target.appendChild(this.element);
+          }
+
+          this.drop();
+        }
+
+        build(row = 20) {
+          let root = document.createDocumentFragment();
+
+          let chars = [];
+
+          for (let i = 0; i < row; ++i) {
+            let c = new Char();
+
+            root.appendChild(c.element);
+
+            chars.push(c);
+
+            if (Math.random() < 0.5) {
+              loop(() => c.mutate(), r(1000, 5000));
+            }
+          }
+
+          this.trail = new Trail(chars, {
+            size: r(10, 30),
+            offset: r(0, 100),
+          });
+
+          this.element.appendChild(root);
+        }
+
+        drop() {
+          let trail = this.trail;
+
+          let len = trail.body.length;
+
+          let delay = r(10, 100);
+
+          loop(() => {
+            trail.move();
+
+            trail.traverse((c, i, last) => {
+              c.element.style = `
+                color: hsl(136, 100%, ${(85 / len) * (i + 1)}%)
+              `;
+
+              if (last) {
+                c.mutate();
+
+                c.element.style = `
+                  color: hsl(136, 100%, 85%);
+                  text-shadow:
+                    0 0 .5em #fff,
+                    0 0 .5em currentColor;
+                `;
+              }
+            });
+          }, delay);
+        }
+      }
+
+      const main = document.querySelector(".matrix-bg");
+
+      for (let i = 0; i < 50; ++i) {
+        new Rain({
+          target: main,
+          row: 50,
+        });
+      }
+    </script>
+  </body>
+</html>
