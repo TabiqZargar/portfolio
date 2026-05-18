@@ -148,9 +148,8 @@
         color: #8aff8a;
 
         text-shadow:
-          0 0 4px #8aff8a,
-          0 0 8px #8aff8a,
-          0 0 15px #8aff8a;
+          0 0 3px #8aff8a,
+          0 0 8px rgba(138, 255, 138, 0.6);
       }
 
       .hero p {
@@ -336,6 +335,31 @@
           font-size: 2.5vmax;
         }
       }
+
+      /* footer */
+
+      footer {
+        position: relative;
+        z-index: 1;
+
+        text-align: center;
+
+        padding: 35px 20px;
+
+        border-top: 1px solid #8aff8a33;
+
+        background: rgba(0, 0, 0, 0.4);
+
+        backdrop-filter: blur(12px);
+
+        color: #8aff8a;
+
+        text-shadow: 0 0 5px #8aff8a55;
+      }
+
+      footer p {
+        letter-spacing: 1px;
+      }
     </style>
   </head>
 
@@ -463,6 +487,10 @@
         /></a>
       </div>
     </section>
+
+    <footer>
+      <p>&copy; 2026 Tabiq Zargar</p>
+    </footer>
 
     <script>
       function r(from, to) {
