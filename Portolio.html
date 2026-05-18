@@ -45,6 +45,8 @@
         justify-content: center;
 
         overflow: hidden;
+
+        z-index: 0;
       }
 
       .matrix-bg p {
@@ -75,14 +77,17 @@
         background: rgba(0, 0, 0, 0.35);
 
         pointer-events: none;
+
+        z-index: 1;
       }
 
       /* KEEP CONTENT ABOVE OVERLAY */
 
       nav,
-      section {
+      section,
+      footer {
         position: relative;
-        z-index: 1;
+        z-index: 2;
       }
 
       /* NAVBAR */
@@ -90,6 +95,7 @@
       nav {
         position: fixed;
         top: 0;
+        z-index: 1000;
 
         width: 100%;
 
@@ -129,6 +135,8 @@
         text-decoration: none;
 
         transition: 0.3s;
+
+        cursor: pointer;
       }
 
       nav a:hover {
