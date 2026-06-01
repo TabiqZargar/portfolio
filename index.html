@@ -338,27 +338,139 @@
         color: black;
       }
 
+      .contact-links a img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+
+      /* TABLETS */
+
+      @media (max-width: 1024px) {
+        nav {
+          padding: 20px 30px;
+        }
+
+        section {
+          padding: 80px 7%;
+        }
+
+        .hero h2 {
+          font-size: 3.8rem;
+        }
+      }
+
       /* MOBILE */
 
       @media (max-width: 768px) {
         nav {
-          padding: 20px;
-        }
-
-        nav ul {
+          padding: 15px 20px;
+          flex-direction: column;
           gap: 15px;
         }
 
+        nav h1 {
+          font-size: 1.5rem;
+        }
+
+        nav ul {
+          gap: 12px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        section {
+          padding: 70px 20px;
+        }
+
+        .hero {
+          padding-top: 100px;
+        }
+
         .hero h2 {
-          font-size: 3rem;
+          font-size: 2.5rem;
+          line-height: 1.2;
+        }
+
+        .hero p {
+          font-size: 1rem;
         }
 
         .buttons {
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .buttons a {
+          width: 100%;
+          max-width: 280px;
+          text-align: center;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .about-box {
+          padding: 25px;
+        }
+
+        .skills {
+          justify-content: center;
+        }
+
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 30px;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-links {
           flex-direction: column;
         }
 
+        .contact-links a {
+          width: 100%;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
         .matrix-bg span {
+          width: 3vmax;
+          height: 3vmax;
           font-size: 2.5vmax;
+        }
+      }
+
+      /* SMALL PHONES */
+
+      @media (max-width: 480px) {
+        .hero h2 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 0.95rem;
+        }
+
+        nav ul {
+          font-size: 0.9rem;
+        }
+
+        .skill {
+          padding: 10px 18px;
+          font-size: 0.9rem;
+        }
+
+        .card {
+          padding: 20px;
         }
       }
 
@@ -514,8 +626,9 @@
 
       <div class="contact-links">
         <a href="https://github.com/TabiqZargar">
-          <img src="./github.png" width="20px" alt="" /> GitHub</a
-        >
+          <img src="./github.png" alt="GitHub" />
+          GitHub
+        </a>
 
         <a href="https://www.linkedin.com/in/tabiq-zargar-4ba724345/">
           <img src="./linkedin-.webp" width="20px" alt="" /> LinkedIn</a
@@ -683,7 +796,9 @@
 
       const main = document.querySelector(".matrix-bg");
 
-      for (let i = 0; i < 50; ++i) {
+      const rainCount = window.innerWidth < 768 ? 20 : 50;
+
+      for (let i = 0; i < rainCount; i++) {
         new Rain({
           target: main,
           row: 50,
